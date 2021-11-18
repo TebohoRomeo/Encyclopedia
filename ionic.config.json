@@ -1,0 +1,7 @@
+{
+  "name": "Grind",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
