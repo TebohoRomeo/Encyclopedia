@@ -5,6 +5,22 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
+  {
+    path: 'news-single',
+    loadChildren: () => import('./pages/news-single/news-single.module').then( m => m.NewsSinglePageModule)
+  },
+  {
+    path: 'languages',
+    loadChildren: () => import('./pages/languages/languages.module').then( m => m.LanguagesPageModule)
+  },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
+  {
+    path: 'tab5',
+    loadChildren: () => import('./tab5/tab5.module').then( m => m.Tab5PageModule)
   }
 ];
 @NgModule({

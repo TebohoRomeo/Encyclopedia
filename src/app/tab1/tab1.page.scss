@@ -1,0 +1,22 @@
+ion-content {
+    --padding-top: 40px;
+}
+
+.color-bg {
+    // --background: transparent;
+    --border-width: 0 !important;
+    ion-icon {
+    color: #000000;
+    width: 30px;
+    height: 30px;
+    }
+    
+    ion-title {
+        font-size: 30px;
+    }
+}
+
+.title {
+    color: #fff;
+    font-size: small;
+}

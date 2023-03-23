@@ -1,0 +1,50 @@
+<ion-header color="dark">
+  <ion-toolbar color="dark" class="ion-no-border">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="bookmark-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title>
+      </ion-title> -->
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-img [src]="article.urlToImage"></ion-img>
+
+    <ion-card-content>
+      <ion-card-title>{{article.title}}</ion-card-title>
+
+      <p>{{article.content}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-tabs>
+    <ion-router-outlet></ion-router-outlet>
+    <p>footer</p>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="theme">
+        <ion-icon name="color-palette-outline"></ion-icon>
+        <ion-label>Theme</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="language">
+        <ion-icon name="language"></ion-icon>
+        <ion-label>Languages</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="home">
+        <ion-icon name="bookmark-outline"></ion-icon>
+        <ion-label>Comments</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="more">
+        <ion-icon name="menu"></ion-icon>
+        <ion-label>More</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-footer>
