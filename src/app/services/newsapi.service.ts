@@ -23,7 +23,19 @@ export class NewsapiService {
   constructor(private http: HttpClient) {}
 
   getData(url) {
-    return this.http.get(`${API_URL}/${url}&apiKey=${API_KEY}`);
+    return this.http.get(`${API_URL}/${url}&apiKey=${API_KEY}`)
+  }
+
+  getTopHeadlines(): Observable<any> {
+    return this.http.get(
+      `${API_URL}top-headlines?country=za&apiKey=${API_KEY}`
+    )
+  }
+
+  getArticleByCategory(category): Observable<any> {
+    return this.http.get(
+      `${API_URL}top-headlines?country=za&${category}=business&apiKey=${API_KEY}`
+    )
   }
 
   getApiUrl(url) {    
@@ -49,4 +61,7 @@ export class NewsapiService {
   //   return this.http.get(`${API_URL}/${url}/?page=1`, this.httpOptions)
   // }
 
+  getTopCountry(){
+    // What is the main thing to {KEEE}
+  }
 }

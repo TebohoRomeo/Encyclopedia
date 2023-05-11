@@ -23,12 +23,15 @@ export class Tab1Page{
   month = this.today.toLocaleString('default', { month: 'long' });
   day = this.daysList[this.today.getDay()]
 
+  // Variables
   data: any;
   page = 1;
+  selectCategory = 'sport';
+  topHeadlines = []
   constructor(private newsService:NewsapiService, private router: Router) {
     console.log(this.page, 'This page');
     
-    this.newsService
+    newsService
       .getData(
         `top-headlines?country=za&category=business&page=${
           this.page
@@ -38,7 +41,22 @@ export class Tab1Page{
         console.log(data);
         this.data = data;
       });
+
+
+      newsService.getTopHeadlines()
+      .subscribe((results) => {
+        console.log(results.articles, 'Top Headline');
+        this.topHeadlines.push(...results.articles);
+      })
+
+      newsService.getArticleByCategory(this.selectCategory)
+      .subscribe((results) => {
+        console.log(results, 'By Category');
+        
+      })
   }
+
+  
 
   ngOnInit() {
   }

@@ -20,6 +20,7 @@ export class NewsSinglePage implements OnInit {
 
   changeLanguage(){
     this.router.navigate(['/languages'])
+    // Pops up model
   }
 
 }

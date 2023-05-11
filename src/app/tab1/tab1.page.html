@@ -1,19 +1,20 @@
 <ion-header mode="ios">
-  <ion-toolbar class="color-bg ion-no-border" color="dark">
+  <ion-toolbar class="color-bg ion-no-border ion-margin-top" color="dark">
     <ion-title size="large" class="title">
-      EncycloSpace
+      Local Gazette
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header mode="ios">
-    <ion-toolbar class="color-bg ion-no-border" color="dark"> 
+    <ion-toolbar class="color-bg ion-no-border" color="dark">
       <p style="font-size: 12px; margin-left: 20px; color: gray;">{{day}} ,{{month}} {{today.getDate()}} </p>
+      <ion-searchbar placeholder="Search  Local Gazette" mode="ios"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
-
- <ion-card  *ngFor="let article of data?.artitle">
+  
+ <ion-card *ngFor="let article of topHeadlines">
     <div class="" (click)="onGoToNewsSinglePage(article)">
       <ion-img [src]="article.urlToImage"></ion-img>
   
@@ -22,7 +23,7 @@
           <h1>{{article.title}}</h1>
         </ion-card-title>
   
-        <p>{{article.source}}</p>
+        {{article.author}}
       </ion-card-content>
     </div>
     <ion-item lines="none">
