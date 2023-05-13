@@ -25,23 +25,24 @@ export class Tab1Page{
 
   // Variables
   data: any;
-  page = 1;
+  // page = 1;
   selectCategory = 'sport';
   topHeadlines = []
   constructor(private newsService:NewsapiService, private router: Router) {
-    console.log(this.page, 'This page');
+    // console.log(this.page, 'This page');
     
-    newsService
-      .getData(
-        `top-headlines?country=za&category=business&page=${
-          this.page
-        }`
-      )
-      .subscribe(data => {
-        console.log(data);
-        this.data = data;
-      });
 
+    // This might be useful one day when updating live news
+    // newsService
+    //   .getData(
+    //     `top-headlines?country=za&category=business&page=${
+    //       this.page
+    //     }`
+    //   )
+    //   .subscribe(data => {
+    //     console.log(data);
+    //     this.data = data;
+    // });
 
       newsService.getTopHeadlines()
       .subscribe((results) => {
@@ -51,8 +52,6 @@ export class Tab1Page{
 
       newsService.getArticleByCategory(this.selectCategory)
       .subscribe((results) => {
-        console.log(results, 'By Category');
-        
       })
   }
 
@@ -67,7 +66,7 @@ export class Tab1Page{
   }
 
   loadMoreNews(event) {
-    this.page++;
+    // this.page++;
     console.log(event);
     this.newsService
       .getTopHeadlines()

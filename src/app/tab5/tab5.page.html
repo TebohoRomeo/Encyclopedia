@@ -1,9 +1,53 @@
 <ion-header>
-  <ion-toolbar>
+  <!-- <ion-toolbar class="color-bg ion-no-border" color="dark">
     <ion-title>tab5</ion-title>
-  </ion-toolbar>
+  </ion-toolbar> -->
+
+  <div class="profile">
+    <ion-avatar class="ion-margin-top">
+      <img src="../../../assets/img/model_3.png" alt="">
+    </ion-avatar>
+      <h1>Teboho Lekhalo</h1>
+  </div>
 </ion-header>
 
 <ion-content>
+  <ion-card class="ion-padding-top">
+    <ion-card-title>
+      <ion-item lines="full">
+        <ion-icon name="person-outline" slot="start" color="dark"></ion-icon>
+        <ion-label>Edit Profile</ion-label>
+      </ion-item>
+      <!-- <hr> -->
+      <ion-item lines="none">
+        <ion-icon name="key-outline" slot="start" color="dark"></ion-icon>
+        <ion-label>Change Password</ion-label>
+      </ion-item>
+    </ion-card-title>
+  </ion-card>
+
+  <ion-card class="ion-padding-top">
+    <ion-card-title>
+      <!-- <ion-item lines="none">
+        <ion-icon name="people-outline" slot="start" color="dark"></ion-icon>
+        <ion-label>Tell a Friend</ion-label>
+      </ion-item>
+      <hr> -->
+      <ion-item lines="full">
+        <ion-icon name="calendar-outline" slot="start" color="dark"></ion-icon>
+        <ion-label>Subscriptions</ion-label>
+      </ion-item>
+      <!-- <hr> -->
+      <ion-item lines="none">
+        <ion-icon name="card-outline" slot="start" color="dark"></ion-icon>
+        <ion-label>Payment Method</ion-label>
+      </ion-item>
+    </ion-card-title>
+  </ion-card>
+
+  <ion-item lines="none">
+    <ion-icon name="exit-outline" slot="start" color="dark"></ion-icon>
+    <ion-label>Logout</ion-label>
+  </ion-item>
 
 </ion-content>
