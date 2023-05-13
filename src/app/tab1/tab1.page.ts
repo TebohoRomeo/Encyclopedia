@@ -70,19 +70,17 @@ export class Tab1Page{
     this.page++;
     console.log(event);
     this.newsService
-      .getData(
-        `top-headlines?country=us&category=business&page=${
-          this.page
-        }`
-      )
-      .subscribe(data => {
-        // console.log(data);
+      .getTopHeadlines()
+      .subscribe(results => {
+        console.log(results, 'in loadmore');
         // this.data = data;
-        for (const article of data['articles']) {
-          this.data.articles.push(article);
+        for (const article of results['articles']) {
+          console.log(...results.articles, 'Search here');
+          
+          this.topHeadlines.push(...results.articles);
         }
         event.target.complete();
-        console.log(this.data);
+        // console.log(this.data);
       });
   }
 

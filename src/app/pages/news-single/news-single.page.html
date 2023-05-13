@@ -14,17 +14,50 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-img [src]="article.urlToImage"></ion-img>
+  <div>
+    <img src="{{article.urlToImage}}" alt="">
+    <div class="ion-margin">
+      <ion-label color="light" style="font-weight: bold;">{{article.title}}</ion-label>
+    </div>
+    <ion-item color="dark">
+      <ion-label slot="start">
+        <p>{{article.source.name}}</p>
+      </ion-label>
+      <ion-label slot="end">
+        <p>{{article.publishedAt | date}}</p>
+      </ion-label>
+    </ion-item>
 
-    <ion-card-content>
-      <ion-card-title>{{article.title}}</ion-card-title>
+    <ion-item lines="none" color="dark">
+      <ion-label style="font-weight: 300px;">{{article.description}}</ion-label>
+    </ion-item>
+  </div>
 
-      <p>{{article.content}}</p>
-    </ion-card-content>
-  </ion-card>
+  <ion-text color="light">See More</ion-text>
+  
+  <ion-list>
+    <ion-row *ngFor="let article of topHeadlines" style="background: gray; border-radius: 16px;" class="ion-margin"> 
+      <ion-col size="4">
+        <img src="{{article.urlToImage}}" alt="" style="width:300; height: 100px; object-fit: cover;">
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>
+          {{article.author}}
+          <p>{{article.publishedAt | date}}</p>
+          <p>{{article.title}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMoreNews($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubble" loadingText="loading news.."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
-<ion-footer>
+
+
+
+<!-- <ion-footer>
   <ion-tabs>
     <ion-router-outlet></ion-router-outlet>
     <p>footer</p>
@@ -47,4 +80,4 @@
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
-</ion-footer>
+</ion-footer> -->
