@@ -1,5 +1,5 @@
 <ion-header mode="ios">
-  <ion-toolbar class="color-bg ion-no-border ion-margin-top" color="dark">
+  <ion-toolbar class="color-bg ion-no-border" color="dark">
     <ion-title size="large" class="title">
       Local Gazette
     </ion-title>
@@ -9,10 +9,15 @@
 <ion-content [fullscreen]="true">
   <ion-header mode="ios">
     <ion-toolbar class="color-bg ion-no-border" color="dark">
-      <p style="font-size: 12px; margin-left: 20px; color: gray;">{{day}} ,{{month}} {{today.getDate()}} </p>
-      <ion-searchbar placeholder="Search Local Gazette" mode="ios"></ion-searchbar>
+      <p style="font-size: 20px; margin-left: 20px; color: gray;">{{day}}, {{month}} {{today.getDate()}}</p>
+      <ion-searchbar placeholder="Search LocalGazette"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
+
+  <div class="top-read"></div>
+  <div class="top-featured"></div>
+  <div class="on-this-day"></div>
+  <div class="trending"></div>
 
     <div class="inner-container ion-margin" *ngFor="let article of topHeadlines">
       <div class="" (click)="onGoToNewsSinglePage(article)">
@@ -33,7 +38,7 @@
           <ion-label style="font-weight: 300px;">{{article.description}}</ion-label>
         </ion-item>
       </div>
-      <ion-item lines="full" color="dark">
+      <!-- <ion-item lines="full" color="dark">
           <ion-button slot="end" fill="clear" shape="round" color="light">
             <ion-icon name="heart-outline"></ion-icon>
           </ion-button>
@@ -43,7 +48,7 @@
           <ion-button slot="end" fill="clear" shape="round" color="light">
             <ion-icon name="bookmark-outline"></ion-icon>
           </ion-button>
-      </ion-item>
+      </ion-item> -->
     </div>
 
   <ion-infinite-scroll (ionInfinite)="loadMoreNews($event)">

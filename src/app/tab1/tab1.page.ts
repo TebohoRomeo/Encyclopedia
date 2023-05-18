@@ -46,7 +46,6 @@ export class Tab1Page{
 
       newsService.getTopHeadlines()
       .subscribe((results) => {
-        console.log(results.articles, 'Top Headline');
         this.topHeadlines.push(...results.articles);
       })
 

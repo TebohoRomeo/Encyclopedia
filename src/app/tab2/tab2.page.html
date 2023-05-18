@@ -1,36 +1,56 @@
-<ion-content [fullscreen]="true">
+<ion-content>
+  <ion-header class="ion-margin-top" mode="ios">
+    <ion-toolbar class="color-bg ion-no-border" color="dark">
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="settings-outline" color="light" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-searchbar placeholder="Search LocalGazette" slot="start"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
 
-  <ion-card *ngFor="let article of data?.artitle">
-    <div class="" (click)="onGoToNewsSinglePage(article)">
-      <ion-img [src]="article.urlToImage"></ion-img>
-  
-      <ion-card-content>
-        <ion-card-title>
-          <h1>{{article.title}}</h1>
-        </ion-card-title>
-  
-        <!-- <p>{{article.source}}</p> -->
-      </ion-card-content>
-    </div>
-    
-    <ion-item lines="none">
-      <ion-label slot="start">
-        <p>{{article.source}}</p>
-      </ion-label>
-      <ion-button slot="end" fill="clear" shape="round" color="dark">
-        <ion-icon name="heart-outline"></ion-icon>
-      </ion-button>
-      <ion-button slot="end" fill="clear" shape="round" color="dark">
-        <ion-icon name="share-social-outline"></ion-icon>
-      </ion-button>
-      <ion-button slot="end" fill="clear" shape="round" color="dark">
-        <ion-icon name="bookmark-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-  </ion-card>
+  <ion-label color="light">
+    <h1 class="ion-padding-top ion-padding-horizontal" style="font-weight: bold;">Trending</h1>
+  </ion-label>
+
+  <div class=" ion-margin-top social-media-trends">
+    <ion-list>
+      <!-- *ngIf will be on the row tags -->
+      <ion-row>
+        <ion-label class="ion-padding-horizontal">
+          <p>trending on twitter</p>
+          <h1>#Loadshedding</h1>
+        </ion-label>
+      </ion-row>
+    </ion-list>
+  </div>
+
+  <ion-label color="light">
+    <h1 class="ion-padding-top ion-padding-horizontal" style="font-weight: bold;">Related articles</h1>
+  </ion-label>
+
+
+  <!-- Here should be an api that pulls social media trends #Facebook/Twitter/Instagram. -->
+  <!-- Leave this space for Ads after showing small list of trends -->
+  <!-- Show list of random news -->
+
+ <!-- <ion-list>
+     <ion-row *ngFor="let article of randomNews" class="ion-margin"> 
+      <ion-col size="4">
+        <img src="{{article.urlToImage}}" alt="" style="width:300; height: 100px; object-fit: cover;">
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>
+          {{article.author}}
+          <p>{{article.publishedAt | date}}</p>
+          <p>{{article.title}}</p>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-list>
       
-
   <ion-infinite-scroll (ionInfinite)="loadMoreNews($event)">
-    <ion-infinite-scroll-content loadingSpinner="bubble" loadingText="loading news.."></ion-infinite-scroll-content>
-  </ion-infinite-scroll>
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
 </ion-content>
