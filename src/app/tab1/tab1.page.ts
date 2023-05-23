@@ -20,7 +20,7 @@ export class Tab1Page{
   // Dates
   today = new Date();
   daysList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  month = this.today.toLocaleString('default', { month: 'long' });
+  month = this.today.toLocaleString('default', { month: 'short' });
   day = this.daysList[this.today.getDay()]
 
   // Variables
