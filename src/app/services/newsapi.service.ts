@@ -6,8 +6,8 @@ import { BehaviorSubject, from, Observable, of, throwError } from 'rxjs';
 import { decode } from 'querystring';
 
 
-const API_URL = environment.apiUrl;
-const API_KEY = environment.apiKey;
+const API_URL = environment.newsBaseApi;
+const API_KEY = environment.newsBaseApiKey;
 const apiurl = environment.linkApi;
 
 @Injectable({
@@ -29,6 +29,12 @@ export class NewsapiService {
   getTopHeadlines(): Observable<any> {
     return this.http.get(
       `${API_URL}top-headlines?country=za&apiKey=${API_KEY}`
+    )
+  }
+
+  getBusinessNews(): Observable<any> {
+    return this.http.get(
+      `${API_URL}top-headlines?country=za&category=business&apiKey=${API_KEY}`
     )
   }
 

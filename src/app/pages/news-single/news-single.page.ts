@@ -25,17 +25,15 @@ export class NewsSinglePage implements OnInit {
     this.page++;
     console.log(event);
     this.newsService
-      .getTopHeadlines()
+      .getBusinessNews()
       .subscribe(results => {
         console.log(results, 'in loadmore');
-        // this.data = data;
         for (const article of results['articles']) {
           console.log(...results.articles, 'Search here');
           
           this.topHeadlines.push(...results.articles);
         }
         event.target.complete();
-        // console.log(this.data);
       });
   }
 

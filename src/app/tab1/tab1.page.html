@@ -9,19 +9,27 @@
 <ion-content [fullscreen]="true">
   <ion-header mode="ios">
     <ion-toolbar class="color-bg ion-no-border" color="dark">
-      <p style="font-size: 20px; margin-left: 20px; color: gray;">{{day}}, {{month}} {{today.getDate()}}</p>
+      <p style="font-size: 20px; margin-left: 20px; color: gray;">
+        {{day}}, {{month}} {{today.getDate()}}
+        <!-- <img [src]="weatherIcon" style="height: 40px;"> -->
+      </p>
       <ion-searchbar placeholder="Search LocalGazette"></ion-searchbar>
     </ion-toolbar>
   </ion-header>
   
   <!-- Fetch from database -->
+  <div class="featured-video"></div>
   <div class="top-read"></div>
   <div class="happening-now"></div>
   <div class="top-featured"></div>
   <div class="on-this-day"></div>
   <div class="trending"></div>
 
-    <div class="inner-container ion-margin" *ngFor="let article of topHeadlines">
+  <ion-label class="ion-margin-horizontal" style="font-weight: bold;" color="light">
+    Random Article
+    <!-- <h1>Random Article</h1> -->
+  </ion-label>
+    <div class="random-articles ion-margin" *ngFor="let article of topHeadlines">
       <div class="" (click)="onGoToNewsSinglePage(article)">
         <img src="{{article.urlToImage}}" alt="">
         <div class="ion-margin">
@@ -36,17 +44,6 @@
           </ion-label>
         </ion-item>
       </div>
-      <!-- <ion-item lines="full" color="dark">
-          <ion-button slot="end" fill="clear" shape="round" color="light">
-            <ion-icon name="heart-outline"></ion-icon>
-          </ion-button>
-          <ion-button slot="end" fill="clear" shape="round" color="light">
-            <ion-icon name="share-social-outline"></ion-icon>
-          </ion-button>
-          <ion-button slot="end" fill="clear" shape="round" color="light">
-            <ion-icon name="bookmark-outline"></ion-icon>
-          </ion-button>
-      </ion-item> -->
     </div>
 
   <ion-infinite-scroll (ionInfinite)="loadMoreNews($event)">

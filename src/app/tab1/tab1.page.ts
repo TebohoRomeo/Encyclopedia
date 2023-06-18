@@ -1,9 +1,16 @@
+import { environment } from './../../environments/environment';
 /* eslint-disable @typescript-eslint/dot-notation */
 import { Component, ViewEncapsulation, OnInit, ViewChild } from '@angular/core';
 import { IonContent  } from '@ionic/angular';
+import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { NewsapiService } from '../services/newsapi.service'
+
+
+const API_URL = environment.WEATHER_URL;
+const API_KEY = environment.WEATHER_KEY;
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -25,24 +32,15 @@ export class Tab1Page{
 
   // Variables
   data: any;
-  // page = 1;
   selectCategory = 'sport';
   topHeadlines = []
-  constructor(private newsService:NewsapiService, private router: Router) {
-    // console.log(this.page, 'This page');
-    
+  weatherOps: any;
+  weatherIcon: any;
+  weatherTemp: any;
+  constructor(private newsService:NewsapiService, private router: Router, 
+    private http: HttpClient) {
 
-    // This might be useful one day when updating live news
-    // newsService
-    //   .getData(
-    //     `top-headlines?country=za&category=business&page=${
-    //       this.page
-    //     }`
-    //   )
-    //   .subscribe(data => {
-    //     console.log(data);
-    //     this.data = data;
-    // });
+    // this.loadData();
 
       newsService.getTopHeadlines()
       .subscribe((results) => {
@@ -54,7 +52,18 @@ export class Tab1Page{
       })
   }
 
-  
+  loadData() {
+    this.http.get(`${API_URL}/weather?q=${"johannesburg"}&appid=${API_KEY}`)
+    .subscribe(results => {
+      console.log(results,' my results');
+      this.weatherOps = results['weather'][0];
+
+      // const weathertemp = ;
+      const weathercon = `https://openweathermap.org/img/wn/${this.weatherOps.icon}@4x.png`
+      
+      this.weatherIcon = weathercon;
+    })
+  }
 
   ngOnInit() {
   }
@@ -65,20 +74,17 @@ export class Tab1Page{
   }
 
   loadMoreNews(event) {
-    // this.page++;
     console.log(event);
     this.newsService
       .getTopHeadlines()
       .subscribe(results => {
         console.log(results, 'in loadmore');
-        // this.data = data;
         for (const article of results['articles']) {
           console.log(...results.articles, 'Search here');
           
           this.topHeadlines.push(...results.articles);
         }
         event.target.complete();
-        // console.log(this.data);
       });
   }
 
